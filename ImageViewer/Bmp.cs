@@ -13,23 +13,24 @@ namespace ImageViewer
     {
         string Path;
         string Name;
+        bool BmHeader;
         public Bmp(string path, string name)
         {
             Path = path;
             Name = name;
+            BmHeader = GetConfirmation();
         }
         public bool GetConfirmation()
         {
             string head;
             using (FileStream stream = new FileStream(Path, FileMode.Open, FileAccess.Read))
             {
-                byte[] bytes = new byte[3];
-                stream.Read(bytes, 0, 3);
+                byte[] bytes = new byte[2];
+                stream.Read(bytes, 0, 2);
                 head = Encoding.Default.GetString(bytes);
-                MessageBox.Show(head);
             }
 
-            if (head == "BMP") { return true; }
+            if (head == "BM") { return true; }
             else { return false; }
         }
     }
