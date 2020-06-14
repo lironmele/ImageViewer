@@ -37,6 +37,7 @@
             // opnFileImage
             // 
             this.opnFileImage.FileName = "FileImage";
+            this.opnFileImage.Filter = "BMP files|*.bmp";
             this.opnFileImage.RestoreDirectory = true;
             // 
             // btnChooseFile
