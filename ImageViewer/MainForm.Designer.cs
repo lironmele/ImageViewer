@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.opnFileImage = new System.Windows.Forms.OpenFileDialog();
             this.btnChooseFile = new System.Windows.Forms.Button();
             this.lblChoose = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // openFileDialog1
+            // opnFileImage
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.opnFileImage.FileName = "FileImage";
+            this.opnFileImage.RestoreDirectory = true;
             // 
             // btnChooseFile
             // 
@@ -84,7 +85,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog opnFileImage;
         private System.Windows.Forms.Button btnChooseFile;
         private System.Windows.Forms.Label lblChoose;
         private System.Windows.Forms.Label lblWelcome;

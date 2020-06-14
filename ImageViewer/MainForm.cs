@@ -11,7 +11,10 @@ namespace ImageViewer
         }
         private void btnChooseFile_Click(object sender, EventArgs e)
         {
-
+            if (opnFileImage.ShowDialog() == DialogResult.OK)
+            {
+                //Create new image
+            }
         }
     }
 }
