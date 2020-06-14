@@ -22,8 +22,6 @@ namespace ImageViewer
             Path = path;
             Name = name;
             bytes = File.ReadAllBytes(path);
-            BmHeader = GetConfirmation();
-            Size = GetFileSize();
         }
         public bool GetConfirmation()
         {
