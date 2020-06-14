@@ -15,6 +15,10 @@ namespace ImageViewer
             {
                 Bmp image = new Bmp(opnFileImage.FileName,
                     System.IO.Path.GetFileName(opnFileImage.FileName));
+                if (!image.GetConfirmation())
+                {
+                    MessageBox.Show("Image file is corrupted! Please try a different file.");
+                }
             }
         }
     }
