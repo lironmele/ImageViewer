@@ -13,7 +13,8 @@ namespace ImageViewer
         {
             if (opnFileImage.ShowDialog() == DialogResult.OK)
             {
-                //Create new image
+                Bmp image = new Bmp(opnFileImage.FileName,
+                    System.IO.Path.GetFileName(opnFileImage.FileName));
             }
         }
     }
