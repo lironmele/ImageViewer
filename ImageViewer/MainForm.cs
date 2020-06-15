@@ -18,6 +18,7 @@ namespace ImageViewer
                 if (!image.GetConfirmation())
                 {
                     MessageBox.Show("Image file is corrupted! Please try a different file.");
+                    return;
                 }
             }
         }
