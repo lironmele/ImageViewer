@@ -20,6 +20,9 @@ namespace ImageViewer
                     MessageBox.Show("Image file is corrupted! Please try a different file.");
                     return;
                 }
+                Hide();
+                new ImageForm(image.GetBitmap()).ShowDialog();
+                Show();
             }
         }
     }

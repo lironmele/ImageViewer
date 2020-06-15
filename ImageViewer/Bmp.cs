@@ -17,12 +17,14 @@ namespace ImageViewer
         public string Name { get; }
         byte[] bytes { get; }
         int[] dimensions { get; }
+        Color[] pixels { get; }
         public Bmp(string path, string name)
         {
             Path = path;
             Name = name;
             bytes = File.ReadAllBytes(path);
             dimensions = GetDimensions();
+            pixels = GetPixelData();
         }
         public bool GetConfirmation()
         {
@@ -38,6 +40,25 @@ namespace ImageViewer
         {
             if (dimensions[0] % 4 == 0) { return 0; }
             else { return 4 - dimensions[0] % 4; }
+        }
+        public Color[] GetPixelData()
+        {
+            Color[] pixels = new Color[dimensions[0] * dimensions[1]];
+            int i = 0;
+            for (int row = GetOffSet() + (dimensions[0] * 3 + GetPadding()) * (dimensions[1] - 1); row > GetOffSet() - 1; row -= (dimensions[0] * 3 + GetPadding()))
+                for (int col = 0; col < dimensions[0] * 3; col += 3)
+                {
+                    pixels[i++] = Color.FromArgb(bytes[row + col + 2], bytes[row + col + 1], bytes[row + col]);
+                }
+            return pixels;
+        }
+        public Bitmap GetBitmap()
+        {
+            Bitmap bmp = new Bitmap(dimensions[0], dimensions[1]);
+            for (int y = 0; y < dimensions[1]; y++)
+                for (int x = 0; x < dimensions[0]; x++)
+                    bmp.SetPixel(x, y, pixels[x + y * dimensions[1]]);
+            return bmp;
         }
     }
 }
