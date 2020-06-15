@@ -57,7 +57,7 @@ namespace ImageViewer
             Bitmap bmp = new Bitmap(dimensions[0], dimensions[1]);
             for (int y = 0; y < dimensions[1]; y++)
                 for (int x = 0; x < dimensions[0]; x++)
-                    bmp.SetPixel(x, y, pixels[x + y * dimensions[1]]);
+                    bmp.SetPixel(x, y, pixels[x + y * dimensions[0]]);
             return bmp;
         }
     }
