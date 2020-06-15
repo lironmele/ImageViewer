@@ -38,8 +38,8 @@ namespace ImageViewer
         public int[] GetDimensions() { return new int[] { BitConverter.ToInt32(bytes, 18), BitConverter.ToInt32(bytes, 22) }; }
         public int GetPadding()
         {
-            if (dimensions[0] % 4 == 0) { return 0; }
-            else { return 4 - dimensions[0] % 4; }
+            if ((dimensions[0] * 3) % 4 == 0) { return 0; }
+            else { return 4 - (dimensions[0] * 3) % 4; }
         }
         public Color[] GetPixelData()
         {
