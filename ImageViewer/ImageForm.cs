@@ -22,6 +22,7 @@ namespace ImageViewer
         private void ImageForm_Load(object sender, EventArgs e)
         {
             Size = new Size(bmp.Width, bmp.Height);
+            picImage.Size = Size;
             picImage.Image = bmp;
         }
     }
