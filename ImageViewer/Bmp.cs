@@ -29,5 +29,7 @@ namespace ImageViewer
             else { return false; }
         }
         public int GetFileSize() { return BitConverter.ToInt32(bytes, 2); }
+        public int GetOffSet() { return BitConverter.ToInt32(bytes, 10); }
+        public int GetDIBHeader() { return BitConverter.ToInt32(bytes, 14); }
     }
 }
