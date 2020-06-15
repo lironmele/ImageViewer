@@ -16,11 +16,13 @@ namespace ImageViewer
         public string Path { get; }
         public string Name { get; }
         byte[] bytes { get; }
+        int[] dimensions { get; }
         public Bmp(string path, string name)
         {
             Path = path;
             Name = name;
             bytes = File.ReadAllBytes(path);
+            dimensions = GetDimensions();
         }
         public bool GetConfirmation()
         {
@@ -31,5 +33,11 @@ namespace ImageViewer
         public int GetFileSize() { return BitConverter.ToInt32(bytes, 2); }
         public int GetOffSet() { return BitConverter.ToInt32(bytes, 10); }
         public int GetDIBHeader() { return BitConverter.ToInt32(bytes, 14); }
+        public int[] GetDimensions() { return new int[] { BitConverter.ToInt32(bytes, 18), BitConverter.ToInt32(bytes, 22) }; }
+        public int GetPadding()
+        {
+            if (dimensions[0] % 4 == 0) { return 0; }
+            else { return 4 - dimensions[0] % 4; }
+        }
     }
 }
